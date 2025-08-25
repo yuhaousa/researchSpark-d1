@@ -19,8 +19,12 @@ export default function ResearchPage() {
       downloads: 342,
       rating: 4.8,
       tags: ["AI", "Personalization", "Customer Experience", "Hotel Operations"],
+      keywords: ["Machine Learning", "Guest Preferences", "Recommendation Systems", "Data Analytics"],
       linkedCourses: 3,
       featured: true,
+      relevanceLevel: 10,
+      useCases: ["Guest room preferences", "Dining recommendations", "Service customization"],
+      interests: ["AI in Hospitality", "Digital Innovation"],
     },
     {
       id: 2,
@@ -34,8 +38,12 @@ export default function ResearchPage() {
       downloads: 287,
       rating: 4.6,
       tags: ["Sustainability", "Environmental Impact", "Tourism", "Economics"],
+      keywords: ["Carbon Footprint", "Green Practices", "Eco-Tourism", "Community Development"],
       linkedCourses: 2,
       featured: false,
+      relevanceLevel: 9,
+      useCases: ["Waste reduction programs", "Energy efficiency", "Local sourcing"],
+      interests: ["Sustainability"],
     },
     {
       id: 3,
@@ -49,8 +57,12 @@ export default function ResearchPage() {
       downloads: 445,
       rating: 4.9,
       tags: ["Operations", "COVID-19", "Consumer Behavior", "Safety"],
+      keywords: ["Health Protocols", "Contactless Technology", "Guest Safety", "Operational Efficiency"],
       linkedCourses: 4,
       featured: true,
+      relevanceLevel: 9,
+      useCases: ["Contactless check-in", "Enhanced cleaning protocols", "Digital menus"],
+      interests: ["Guest Experience", "Digital Innovation"],
     },
     {
       id: 4,
@@ -64,8 +76,12 @@ export default function ResearchPage() {
       downloads: 198,
       rating: 4.4,
       tags: ["Digital Transformation", "Restaurant", "POS Systems", "CRM"],
+      keywords: ["Point of Sale", "Inventory Management", "Customer Data", "Automation"],
       linkedCourses: 2,
       featured: false,
+      relevanceLevel: 8,
+      useCases: ["Order management", "Inventory tracking", "Customer analytics"],
+      interests: ["Digital Innovation"],
     },
     {
       id: 5,
@@ -79,23 +95,31 @@ export default function ResearchPage() {
       downloads: 356,
       rating: 4.7,
       tags: ["Machine Learning", "Revenue Management", "Pricing", "Optimization"],
+      keywords: ["Dynamic Pricing", "Demand Forecasting", "Occupancy Optimization", "Yield Management"],
       linkedCourses: 3,
       featured: false,
+      relevanceLevel: 9,
+      useCases: ["Dynamic room pricing", "Demand prediction", "Occupancy optimization"],
+      interests: ["AI in Hospitality"],
     },
     {
       id: 6,
-      title: "Cultural Sensitivity in Global Hospitality Brands",
-      authors: ["Dr. Yuki Tanaka", "Prof. Ahmed Hassan"],
+      title: "Staff Training and Development in Modern Hospitality",
+      authors: ["Dr. Jennifer Lee", "Prof. Mark Anderson"],
       abstract:
-        "An exploration of cultural adaptation strategies employed by international hospitality brands, analyzing success factors and common pitfalls in cross-cultural service delivery.",
-      category: "Cultural Studies",
+        "An exploration of innovative training methodologies and their impact on employee performance, retention, and guest satisfaction in the hospitality industry.",
+      category: "Human Resources",
       publishedDate: "2023-12-28",
       views: 1445,
       downloads: 167,
       rating: 4.5,
-      tags: ["Cultural Sensitivity", "Global Brands", "Service Delivery", "Cross-Cultural"],
+      tags: ["Training", "Employee Development", "Performance", "Retention"],
+      keywords: ["Learning Management", "Skill Development", "Employee Engagement", "Performance Metrics"],
       linkedCourses: 1,
       featured: false,
+      relevanceLevel: 8,
+      useCases: ["Online training modules", "Performance tracking", "Career development"],
+      interests: ["Staff Development"],
     },
   ]
 
@@ -106,8 +130,36 @@ export default function ResearchPage() {
     "Operations",
     "Revenue Management",
     "Cultural Studies",
+    "Human Resources",
   ]
   const sortOptions = ["Most Recent", "Most Viewed", "Highest Rated", "Most Downloaded"]
+
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null
+  const selectedInterest = urlParams?.get("interest")
+
+  const filteredPapers = selectedInterest
+    ? researchPapers
+        .filter((paper) =>
+          paper.interests.some((interest) => interest.toLowerCase().includes(selectedInterest.toLowerCase())),
+        )
+        .sort((a, b) => b.relevanceLevel - a.relevanceLevel)
+    : researchPapers
+
+  // Component for horizontal relevance bar indicator
+  const RelevanceBar = ({ level }: { level: number }) => {
+    return (
+      <div className="flex flex-col gap-1">
+        <span className="text-xs font-medium text-gray-600">Relevance</span>
+        <div className="flex items-center w-20 h-4 bg-gray-200 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-300"
+            style={{ width: `${(level / 10) * 100}%` }}
+          />
+        </div>
+        <span className="text-xs font-bold text-emerald-600">{level}/10</span>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -154,13 +206,27 @@ export default function ResearchPage() {
       <section className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900 mb-6">
-              Research <span className="text-emerald-600">Discovery</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Explore cutting-edge research papers in hospitality and related industries. Connect academic insights with
-              practical applications.
-            </p>
+            {selectedInterest ? (
+              <>
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900 mb-6">
+                  Research on <span className="text-emerald-600">{selectedInterest}</span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                  Discover research papers related to {selectedInterest.toLowerCase()} in hospitality and related
+                  industries.
+                </p>
+              </>
+            ) : (
+              <>
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900 mb-6">
+                  Research <span className="text-emerald-600">Discovery</span>
+                </h1>
+                <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                  Explore cutting-edge research papers in hospitality and related industries. Connect academic insights
+                  with practical applications.
+                </p>
+              </>
+            )}
             <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -226,12 +292,21 @@ export default function ResearchPage() {
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-2">Research Papers</h2>
-            <p className="text-gray-600">Showing {researchPapers.length} papers</p>
+            {selectedInterest ? (
+              <>
+                <h2 className="text-2xl font-bold font-serif text-gray-900 mb-2">Papers on {selectedInterest}</h2>
+                <p className="text-gray-600">Showing {filteredPapers.length} papers sorted by relevance</p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl font-bold font-serif text-gray-900 mb-2">Research Papers</h2>
+                <p className="text-gray-600">Showing {filteredPapers.length} papers</p>
+              </>
+            )}
           </div>
 
           <div className="space-y-6">
-            {researchPapers.map((paper) => (
+            {filteredPapers.map((paper) => (
               <Card
                 key={paper.id}
                 className={`border-emerald-100 hover:shadow-lg transition-shadow cursor-pointer ${paper.featured ? "ring-2 ring-emerald-200" : ""}`}
@@ -267,6 +342,33 @@ export default function ResearchPage() {
                         </div>
                       </div>
                       <CardDescription className="text-base leading-relaxed mb-4">{paper.abstract}</CardDescription>
+
+                      <div className="mb-4">
+                        <h4 className="text-sm font-medium text-gray-700 mb-2">Keywords:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {paper.keywords.map((keyword) => (
+                            <Badge
+                              key={keyword}
+                              variant="outline"
+                              className="text-xs bg-emerald-50 border-emerald-200 text-emerald-700"
+                            >
+                              {keyword}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mb-4">
+                        <h4 className="text-sm font-medium text-gray-700 mb-2">Key Use Cases:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {paper.useCases.map((useCase, index) => (
+                            <Badge key={index} variant="outline" className="text-xs bg-gray-50">
+                              {useCase}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
                       <div className="flex flex-wrap gap-2 mb-4">
                         {paper.tags.map((tag) => (
                           <Badge key={tag} variant="outline" className="text-xs bg-gray-50">
@@ -276,7 +378,8 @@ export default function ResearchPage() {
                         ))}
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-2">
+                    <div className="flex flex-col items-end gap-4">
+                      {selectedInterest && <RelevanceBar level={paper.relevanceLevel} />}
                       <div className="flex items-center gap-1 text-sm text-amber-600">
                         <Star className="h-4 w-4 fill-current" />
                         <span>{paper.rating}</span>
@@ -323,7 +426,6 @@ export default function ResearchPage() {
             ))}
           </div>
 
-          {/* Load More */}
           <div className="text-center mt-12">
             <Button
               variant="outline"

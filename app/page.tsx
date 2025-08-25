@@ -13,13 +13,18 @@ import {
   Globe,
   Zap,
   Shield,
+  Menu,
+  X,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   const trendingArticles = [
     {
       id: 1,
@@ -96,19 +101,82 @@ export default function HomePage() {
               <a href="/collaboration" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
                 Collaboration
               </a>
+              <a href="/profile" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
+                Profile
+              </a>
               <a href="/admin" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
                 Admin
               </a>
             </nav>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
-                Sign In
-              </Button>
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
-                Get Started
+              <div className="hidden md:flex items-center space-x-3">
+                <Button variant="outline" size="sm">
+                  Sign In
+                </Button>
+                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+                  Get Started
+                </Button>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="md:hidden"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           </div>
+
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
+              <nav className="flex flex-col space-y-3 pt-4">
+                <a
+                  href="/research"
+                  className="text-foreground hover:text-emerald-600 transition-colors font-medium py-2 px-2 rounded-md hover:bg-emerald-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Research
+                </a>
+                <a
+                  href="/learning"
+                  className="text-foreground hover:text-emerald-600 transition-colors font-medium py-2 px-2 rounded-md hover:bg-emerald-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Learning
+                </a>
+                <a
+                  href="/collaboration"
+                  className="text-foreground hover:text-emerald-600 transition-colors font-medium py-2 px-2 rounded-md hover:bg-emerald-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Collaboration
+                </a>
+                <a
+                  href="/profile"
+                  className="text-foreground hover:text-emerald-600 transition-colors font-medium py-2 px-2 rounded-md hover:bg-emerald-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Profile
+                </a>
+                <a
+                  href="/admin"
+                  className="text-foreground hover:text-emerald-600 transition-colors font-medium py-2 px-2 rounded-md hover:bg-emerald-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Admin
+                </a>
+                <div className="flex flex-col space-y-2 pt-3 border-t border-gray-200">
+                  <Button variant="outline" size="sm" className="w-full bg-transparent">
+                    Sign In
+                  </Button>
+                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 w-full">
+                    Get Started
+                  </Button>
+                </div>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
