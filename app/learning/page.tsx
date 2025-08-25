@@ -150,17 +150,20 @@ export default function LearningPage() {
               </Badge>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-muted-foreground hover:text-emerald-600 transition-colors font-medium">
+              <a href="/" className="text-muted-foreground hover:text-emerald-600 transition-colors font-medium">
+                Home
+              </a>
+              <a
+                href="/research"
+                className="text-muted-foreground hover:text-emerald-600 transition-colors font-medium"
+              >
                 Research
               </a>
-              <a href="#" className="text-emerald-600 font-medium">
+              <a href="/learning" className="text-emerald-600 font-medium">
                 Learning
               </a>
               <a href="#" className="text-muted-foreground hover:text-emerald-600 transition-colors font-medium">
                 Collaboration
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-emerald-600 transition-colors font-medium">
-                Analytics
               </a>
             </nav>
             <div className="flex items-center space-x-3">

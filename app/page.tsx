@@ -87,17 +87,17 @@ export default function HomePage() {
               </Badge>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
+              <a href="/research" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
                 Research
               </a>
-              <a href="#" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
+              <a href="/learning" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
                 Learning
               </a>
-              <a href="#" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
+              <a href="/collaboration" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
                 Collaboration
               </a>
-              <a href="#" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
-                Analytics
+              <a href="/admin" className="text-foreground hover:text-emerald-600 transition-colors font-medium">
+                Admin
               </a>
             </nav>
             <div className="flex items-center space-x-3">
@@ -111,6 +111,21 @@ export default function HomePage() {
           </div>
         </div>
       </header>
+
+      {/* Banner Image Section */}
+      <section className="relative h-96 overflow-hidden">
+        <img
+          src="/hospitality-innovation-lab.png"
+          alt="Research collaboration banner"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-emerald-600/60 flex items-center justify-center">
+          <div className="text-center text-white max-w-4xl px-4">
+            <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Advancing Hospitality Through Research</h2>
+            <p className="text-xl md:text-2xl opacity-90">Connecting academic excellence with industry innovation</p>
+          </div>
+        </div>
+      </section>
 
       {/* Hero Banner */}
       <section className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50 py-20">
