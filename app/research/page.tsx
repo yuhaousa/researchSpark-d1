@@ -148,15 +148,15 @@ export default function ResearchPage() {
   // Component for horizontal relevance bar indicator
   const RelevanceBar = ({ level }: { level: number }) => {
     return (
-      <div className="flex flex-col gap-1">
+      <div className="flex items-center gap-2">
         <span className="text-xs font-medium text-gray-600">Relevance</span>
-        <div className="flex items-center w-20 h-4 bg-gray-200 rounded-full overflow-hidden">
+        <span className="text-xs font-bold text-emerald-600">{level}/10</span>
+        <div className="flex items-center w-16 h-3 bg-gray-200 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-300"
+            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-300"
             style={{ width: `${(level / 10) * 100}%` }}
           />
         </div>
-        <span className="text-xs font-bold text-emerald-600">{level}/10</span>
       </div>
     )
   }
