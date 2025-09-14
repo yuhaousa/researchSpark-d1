@@ -9,105 +9,105 @@ export default function ResearchPage() {
   const researchPapers = [
     {
       id: 1,
-      title: "AI-Driven Personalization in Modern Hospitality: A Comprehensive Analysis",
+      title: "AI-Driven Personalization in Modern Systems: A Comprehensive Analysis",
       authors: ["Dr. Sarah Chen", "Prof. Michael Rodriguez"],
       abstract:
-        "This study examines the implementation of artificial intelligence in Research personalization, analyzing data from 500+ hotels worldwide to understand customer satisfaction improvements and operational efficiency gains.",
+        "This study examines the implementation of artificial intelligence in system personalization, analyzing data from 500+ organizations worldwide to understand user satisfaction improvements and operational efficiency gains.",
       category: "AI & Technology",
       publishedDate: "2024-01-15",
       views: 2847,
       downloads: 342,
       rating: 4.8,
-      tags: ["AI", "Personalization", "Customer Experience", "Hotel Operations"],
-      keywords: ["Machine Learning", "Guest Preferences", "Recommendation Systems", "Data Analytics"],
+      tags: ["AI", "Personalization", "User Experience", "System Operations"],
+      keywords: ["Machine Learning", "User Preferences", "Recommendation Systems", "Data Analytics"],
       linkedCourses: 3,
       featured: true,
       relevanceLevel: 10,
-      useCases: ["Guest room preferences", "Dining recommendations", "Service customization"],
-      interests: ["AI in Hospitality", "Digital Innovation"],
+      useCases: ["User interface preferences", "Content recommendations", "Service customization"],
+      interests: ["AI in Technology", "Digital Innovation"],
     },
     {
       id: 2,
-      title: "Sustainable Tourism Practices: Environmental Impact and Economic Viability",
+      title: "Sustainable Technology Practices: Environmental Impact and Economic Viability",
       authors: ["Prof. Emma Thompson", "Dr. James Wilson"],
       abstract:
-        "An in-depth analysis of sustainable tourism practices across 200 destinations, measuring environmental impact reduction and long-term economic benefits for local communities.",
+        "An in-depth analysis of sustainable technology practices across 200 organizations, measuring environmental impact reduction and long-term economic benefits for stakeholders.",
       category: "Sustainability",
       publishedDate: "2024-01-10",
       views: 1923,
       downloads: 287,
       rating: 4.6,
-      tags: ["Sustainability", "Environmental Impact", "Tourism", "Economics"],
-      keywords: ["Carbon Footprint", "Green Practices", "Eco-Tourism", "Community Development"],
+      tags: ["Sustainability", "Environmental Impact", "Technology", "Economics"],
+      keywords: ["Carbon Footprint", "Green Practices", "Eco-Technology", "Sustainable Development"],
       linkedCourses: 2,
       featured: false,
       relevanceLevel: 9,
-      useCases: ["Waste reduction programs", "Energy efficiency", "Local sourcing"],
+      useCases: ["Waste reduction programs", "Energy efficiency", "Sustainable sourcing"],
       interests: ["Sustainability"],
     },
     {
       id: 3,
-      title: "Post-Pandemic Hotel Operations: Adapting to New Consumer Behaviors",
+      title: "Post-Pandemic System Operations: Adapting to New User Behaviors",
       authors: ["Dr. Lisa Park", "Prof. David Kim"],
       abstract:
-        "This research explores how hotels have adapted their operations post-COVID-19, analyzing changes in consumer behavior, safety protocols, and technology adoption across the industry.",
+        "This research explores how organizations have adapted their operations post-COVID-19, analyzing changes in user behavior, safety protocols, and technology adoption across industries.",
       category: "Operations",
       publishedDate: "2024-01-08",
       views: 3156,
       downloads: 445,
       rating: 4.9,
-      tags: ["Operations", "COVID-19", "Consumer Behavior", "Safety"],
-      keywords: ["Health Protocols", "Contactless Technology", "Guest Safety", "Operational Efficiency"],
+      tags: ["Operations", "COVID-19", "User Behavior", "Safety"],
+      keywords: ["Health Protocols", "Contactless Technology", "User Safety", "Operational Efficiency"],
       linkedCourses: 4,
       featured: true,
       relevanceLevel: 9,
-      useCases: ["Contactless check-in", "Enhanced cleaning protocols", "Digital menus"],
-      interests: ["Guest Experience", "Digital Innovation"],
+      useCases: ["Contactless interactions", "Enhanced safety protocols", "Digital interfaces"],
+      interests: ["User Experience", "Digital Innovation"],
     },
     {
       id: 4,
-      title: "Digital Transformation in Restaurant Management Systems",
+      title: "Digital Transformation in Management Systems",
       authors: ["Dr. Maria Garcia", "Prof. Robert Chen"],
       abstract:
-        "A comprehensive study on digital transformation trends in restaurant management, covering POS systems, inventory management, and customer relationship management technologies.",
+        "A comprehensive study on digital transformation trends in management systems, covering automation, data management, and stakeholder relationship technologies.",
       category: "Technology",
       publishedDate: "2024-01-05",
       views: 1654,
       downloads: 198,
       rating: 4.4,
-      tags: ["Digital Transformation", "Restaurant", "POS Systems", "CRM"],
-      keywords: ["Point of Sale", "Inventory Management", "Customer Data", "Automation"],
+      tags: ["Digital Transformation", "Management", "Automation", "CRM"],
+      keywords: ["Process Automation", "Data Management", "Stakeholder Relations", "System Integration"],
       linkedCourses: 2,
       featured: false,
       relevanceLevel: 8,
-      useCases: ["Order management", "Inventory tracking", "Customer analytics"],
+      useCases: ["Process management", "Data tracking", "Stakeholder analytics"],
       interests: ["Digital Innovation"],
     },
     {
       id: 5,
-      title: "Revenue Management Optimization Through Machine Learning",
+      title: "Revenue Optimization Through Machine Learning",
       authors: ["Prof. Alex Johnson", "Dr. Nina Patel"],
       abstract:
-        "This paper presents novel machine learning approaches to revenue management in hospitality, demonstrating significant improvements in pricing strategies and occupancy rates.",
+        "This paper presents novel machine learning approaches to revenue optimization across industries, demonstrating significant improvements in pricing strategies and resource utilization.",
       category: "Revenue Management",
       publishedDate: "2024-01-03",
       views: 2234,
       downloads: 356,
       rating: 4.7,
       tags: ["Machine Learning", "Revenue Management", "Pricing", "Optimization"],
-      keywords: ["Dynamic Pricing", "Demand Forecasting", "Occupancy Optimization", "Yield Management"],
+      keywords: ["Dynamic Pricing", "Demand Forecasting", "Resource Optimization", "Yield Management"],
       linkedCourses: 3,
       featured: false,
       relevanceLevel: 9,
-      useCases: ["Dynamic room pricing", "Demand prediction", "Occupancy optimization"],
-      interests: ["AI in Hospitality"],
+      useCases: ["Dynamic pricing strategies", "Demand prediction", "Resource optimization"],
+      interests: ["AI in Business"],
     },
     {
       id: 6,
-      title: "Staff Training and Development in Modern Hospitality",
+      title: "Staff Training and Development in Modern Organizations",
       authors: ["Dr. Jennifer Lee", "Prof. Mark Anderson"],
       abstract:
-        "An exploration of innovative training methodologies and their impact on employee performance, retention, and guest satisfaction in the hospitality industry.",
+        "An exploration of innovative training methodologies and their impact on employee performance, retention, and organizational effectiveness across various industries.",
       category: "Human Resources",
       publishedDate: "2023-12-28",
       views: 1445,
@@ -129,7 +129,7 @@ export default function ResearchPage() {
     "Sustainability",
     "Operations",
     "Revenue Management",
-    "Cultural Studies",
+    "Data Science",
     "Human Resources",
   ]
   const sortOptions = ["Most Recent", "Most Viewed", "Highest Rated", "Most Downloaded"]
@@ -191,10 +191,10 @@ export default function ResearchPage() {
               </a>
             </nav>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={() => (window.location.href = "/auth/signin")}>
                 Sign In
               </Button>
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" onClick={() => (window.location.href = "/auth/register")}>
                 Get Started
               </Button>
             </div>
@@ -212,8 +212,7 @@ export default function ResearchPage() {
                   Research on <span className="text-emerald-600">{selectedInterest}</span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                  Discover research papers related to {selectedInterest.toLowerCase()} in hospitality and related
-                  industries.
+                  Discover research papers related to {selectedInterest.toLowerCase()} across various disciplines.
                 </p>
               </>
             ) : (
@@ -222,7 +221,7 @@ export default function ResearchPage() {
                   Research <span className="text-emerald-600">Discovery</span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                  Explore cutting-edge research papers in hospitality and related industries. Connect academic insights
+                  Explore cutting-edge research papers across multiple disciplines. Connect academic insights
                   with practical applications.
                 </p>
               </>
@@ -415,7 +414,7 @@ export default function ResearchPage() {
                       <Button
                         size="sm"
                         className="bg-emerald-600 hover:bg-emerald-700"
-                        onClick={() => (window.location.href = `/research/${paper.id}`)}
+                        onClick={() => (window.location.href = `/research/${paper.id}/reader`)}
                       >
                         Read Paper
                       </Button>

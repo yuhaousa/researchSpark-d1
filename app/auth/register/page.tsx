@@ -10,7 +10,7 @@ import { BookOpen, Shield, Zap, Award } from "lucide-react"
 export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-xl">
         {/* Logo and Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -19,17 +19,15 @@ export default function RegisterPage() {
             </div>
             <span className="text-2xl font-bold text-gray-900">ReadSpark</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Join ReadSpark</h1>
-          <p className="text-gray-600">Create your research learning account</p>
         </div>
 
-        <Card className="border-0 shadow-xl">
+        <Card className="border-0 shadow-xl max-w-lg mx-auto">
           <CardHeader className="space-y-1">
             <CardTitle className="text-xl text-center">Create Account</CardTitle>
             <CardDescription className="text-center">Fill in your details to get started</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <form className="space-y-4">
+            <form className="space-y-4 max-w-md mx-auto">
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>

@@ -15,20 +15,97 @@ import {
   Shield,
   Menu,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+
+  // Banner slides data
+  const bannerSlides = [
+    {
+      id: 1,
+      image: "/hospitality-innovation-lab.png",
+      title: "Advancing Research Through Innovation",
+      subtitle: "Connecting academic excellence with industry collaboration",
+      ctaText: "Explore Research",
+      ctaLink: "/research"
+    },
+    {
+      id: 2,
+      image: "/placeholder.jpg",
+      title: "AI-Powered Learning Platform",
+      subtitle: "Transform knowledge into actionable insights with cutting-edge technology",
+      ctaText: "Start Learning",
+      ctaLink: "/learning"
+    },
+    {
+      id: 3,
+      image: "/placeholder-l48ss.png",
+      title: "Research Collaboration Network",
+      subtitle: "Bridge the gap between academia and real-world applications",
+      ctaText: "Join Collaboration",
+      ctaLink: "/collaboration"
+    }
+  ]
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % bannerSlides.length)
+    }, 5000) // Change slide every 5 seconds
+    
+    return () => clearInterval(timer)
+  }, [bannerSlides.length])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % bannerSlides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextSlide()
+    }
+    if (isRightSwipe) {
+      prevSlide()
+    }
+  }
 
   const trendingArticles = [
     {
       id: 1,
-      title: "AI-Driven Personalization in Hospitality",
+      title: "AI-Driven Personalization in Technology",
       author: "Dr. Sarah Chen",
       readTime: "8 min",
       views: "2.3k",
@@ -44,7 +121,7 @@ export default function HomePage() {
     },
     {
       id: 3,
-      title: "Post-Pandemic Hotel Operations",
+      title: "Post-Pandemic System Operations",
       author: "Dr. Michael Rodriguez",
       readTime: "10 min",
       views: "3.1k",
@@ -55,14 +132,14 @@ export default function HomePage() {
   const testimonials = [
     {
       name: "Dr. James Wilson",
-      role: "Research Director, Hospitality Institute",
+      role: "Research Director, Technology Institute",
       content:
-        "This platform has revolutionized how we conduct and share hospitality research. The integration between academic work and industry application is seamless.",
+        "This platform has revolutionized how we conduct and share technology research. The integration between academic work and industry application is seamless.",
       avatar: "JW",
     },
     {
       name: "Sarah Martinez",
-      role: "Hotel Operations Manager",
+      role: "System Operations Manager",
       content:
         "The learning modules connected to research papers have transformed our team's understanding of industry best practices. Highly recommended!",
       avatar: "SM",
@@ -88,7 +165,7 @@ export default function HomePage() {
                 <h1 className="text-2xl font-bold font-serif text-foreground">ResearchHub</h1>
               </div>
               <Badge variant="secondary" className="text-xs bg-emerald-50 text-emerald-700 border-emerald-200">
-                Hospitality Research
+                Technology Research
               </Badge>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
@@ -110,10 +187,10 @@ export default function HomePage() {
             </nav>
             <div className="flex items-center space-x-3">
               <div className="hidden md:flex items-center space-x-3">
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" onClick={() => (window.location.href = "/auth/signin")}>
                   Sign In
                 </Button>
-                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" onClick={() => (window.location.href = "/auth/register")}>
                   Get Started
                 </Button>
               </div>
@@ -167,10 +244,10 @@ export default function HomePage() {
                   Admin
                 </a>
                 <div className="flex flex-col space-y-2 pt-3 border-t border-gray-200">
-                  <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  <Button variant="outline" size="sm" className="w-full bg-transparent" onClick={() => (window.location.href = "/auth/signin")}>
                     Sign In
                   </Button>
-                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 w-full">
+                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 w-full" onClick={() => (window.location.href = "/auth/register")}>
                     Get Started
                   </Button>
                 </div>
@@ -180,18 +257,89 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Banner Image Section */}
-      <section className="relative h-96 overflow-hidden">
-        <img
-          src="/hospitality-innovation-lab.png"
-          alt="Research collaboration banner"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-emerald-600/60 flex items-center justify-center">
-          <div className="text-center text-white max-w-4xl px-4">
-            <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">Advancing Hospitality Through Research</h2>
-            <p className="text-xl md:text-2xl opacity-90">Connecting academic excellence with industry innovation</p>
+      {/* Sliding Banner Section */}
+      <section className="relative h-64 md:h-96 overflow-hidden">
+        <div 
+          className="relative w-full h-full"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Slides */}
+          {bannerSlides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                index === currentSlide ? 'opacity-100 translate-x-0' : 
+                index < currentSlide ? 'opacity-0 -translate-x-full' : 'opacity-0 translate-x-full'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-emerald-600/60 flex items-center justify-center">
+                <div className="text-center text-white max-w-4xl px-4">
+                  <h2 className={`text-2xl md:text-4xl lg:text-5xl font-bold font-serif mb-4 transition-all duration-700 ${
+                    index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}>
+                    {slide.title}
+                  </h2>
+                  <p className={`text-lg md:text-xl lg:text-2xl opacity-90 mb-6 transition-all duration-700 delay-300 ${
+                    index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}>
+                    {slide.subtitle}
+                  </p>
+                  <Button
+                    size="lg"
+                    className={`bg-white text-emerald-600 hover:bg-emerald-50 px-6 md:px-8 py-3 transition-all duration-700 delay-500 ${
+                      index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
+                    onClick={() => (window.location.href = slide.ctaLink)}
+                  >
+                    {slide.ctaText}
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5 ml-2" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Navigation Arrows - Hidden on mobile */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-all duration-200 backdrop-blur-sm hidden sm:block"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-all duration-200 backdrop-blur-sm hidden sm:block"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
+
+          {/* Slide Indicators */}
+          <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-3">
+            {bannerSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-200 ${
+                  index === currentSlide
+                    ? 'bg-white scale-110'
+                    : 'bg-white/50 hover:bg-white/70'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
+
+          {/* Touch indicators for mobile */}
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent sm:hidden" />
         </div>
       </section>
 
@@ -208,7 +356,7 @@ export default function HomePage() {
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
               The integrated ecosystem combining cutting-edge research, adaptive learning, and industry collaboration.
-              Transform hospitality knowledge into actionable insights.
+              Transform academic knowledge into actionable insights across disciplines.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3">
@@ -261,7 +409,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Intelligent research discovery and summarization tailored to hospitality industry needs with advanced
+                  Intelligent research discovery and summarization tailored to technology industry needs with advanced
                   AI capabilities.
                 </p>
               </CardContent>
@@ -321,7 +469,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Built for hospitality but designed to scale across industries, creating a universal research-learning
+                  Built for technology research but designed to scale across industries, creating a universal research-learning
                   ecosystem.
                 </p>
               </CardContent>
@@ -398,7 +546,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span>AI in Hospitality</span>
+                      <span>AI in Technology</span>
                       <span className="text-emerald-600 font-medium">85%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
@@ -436,7 +584,7 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-4xl font-bold font-serif text-gray-900 mb-4">Trending Research</h2>
-              <p className="text-xl text-gray-600">Discover the most impactful research papers in hospitality</p>
+              <p className="text-xl text-gray-600">Discover the most impactful research papers in technology</p>
             </div>
             <Button
               variant="outline"

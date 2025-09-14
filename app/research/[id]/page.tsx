@@ -29,12 +29,12 @@ export default function PaperDetailsPage() {
   // Mock data - in real app, this would be fetched based on paperId
   const paper = {
     id: 1,
-    title: "AI-Driven Personalization in Modern Hospitality: A Comprehensive Analysis",
+    title: "AI-Driven Personalization in Modern Systems: A Comprehensive Analysis",
     authors: ["Dr. Sarah Chen", "Prof. Michael Rodriguez"],
     abstract:
-      "This study examines the implementation of artificial intelligence in hospitality personalization, analyzing data from 500+ hotels worldwide to understand customer satisfaction improvements and operational efficiency gains.",
+      "This study examines the implementation of artificial intelligence in system personalization, analyzing data from 500+ organizations worldwide to understand user satisfaction improvements and operational efficiency gains.",
     fullSummary:
-      "This comprehensive research paper presents a detailed analysis of AI-driven personalization strategies in the modern hospitality industry. Through extensive data collection from over 500 hotels across 25 countries, we examine how artificial intelligence technologies are transforming guest experiences and operational efficiency. The study reveals that hotels implementing AI personalization see an average 23% increase in customer satisfaction scores and 18% improvement in operational efficiency. Key findings include the effectiveness of predictive analytics in anticipating guest preferences, the role of machine learning in optimizing room assignments, and the impact of chatbot technologies on customer service delivery.",
+      "This comprehensive research paper presents a detailed analysis of AI-driven personalization strategies in modern technology systems. Through extensive data collection from over 500 organizations across 25 countries, we examine how artificial intelligence technologies are transforming user experiences and operational efficiency. The study reveals that organizations implementing AI personalization see an average 23% increase in user satisfaction scores and 18% improvement in operational efficiency. Key findings include the effectiveness of predictive analytics in anticipating user preferences, the role of machine learning in optimizing system configurations, and the impact of AI technologies on service delivery.",
     category: "AI & Technology",
     publishedDate: "2024-01-15",
     views: 2847,
@@ -43,20 +43,20 @@ export default function PaperDetailsPage() {
     tags: [
       "AI",
       "Personalization",
-      "Customer Experience",
-      "Hotel Operations",
+      "User Experience",
+      "System Operations",
       "Machine Learning",
       "Predictive Analytics",
     ],
     keywords: [
       "Artificial Intelligence",
-      "Hospitality Technology",
-      "Guest Personalization",
-      "Customer Satisfaction",
+      "Technology Systems",
+      "User Personalization",
+      "User Satisfaction",
       "Operational Efficiency",
       "Machine Learning",
       "Predictive Analytics",
-      "Hotel Management",
+      "System Management",
       "Service Innovation",
       "Digital Transformation",
     ],
@@ -70,11 +70,11 @@ export default function PaperDetailsPage() {
   const microLearningModules = [
     {
       id: 1,
-      title: "Introduction to AI in Hospitality",
+      title: "Introduction to AI in Systems",
       duration: "15 min",
       type: "Video",
       completed: true,
-      description: "Overview of AI applications in hotel operations",
+      description: "Overview of AI applications in system operations",
     },
     {
       id: 2,
@@ -82,7 +82,7 @@ export default function PaperDetailsPage() {
       duration: "20 min",
       type: "Interactive",
       completed: true,
-      description: "Understanding recommendation systems for guest preferences",
+      description: "Understanding recommendation systems for user preferences",
     },
     {
       id: 3,
@@ -105,35 +105,35 @@ export default function PaperDetailsPage() {
   const caseStudies = [
     {
       id: 1,
-      title: "Marriott International: AI-Powered Guest Services",
-      company: "Marriott International",
-      industry: "Luxury Hotels",
-      results: "35% increase in guest satisfaction, 28% reduction in service response time",
-      description: "Implementation of AI chatbots and predictive analytics across 500+ properties",
+      title: "Global Tech Corp: AI-Powered User Services",
+      company: "Global Tech Corp",
+      industry: "Technology Services",
+      results: "35% increase in user satisfaction, 28% reduction in service response time",
+      description: "Implementation of AI chatbots and predictive analytics across 500+ service points",
     },
     {
       id: 2,
-      title: "Hilton's Connected Room Experience",
-      company: "Hilton Hotels",
-      industry: "Business Hotels",
-      results: "42% improvement in room preference accuracy, 15% increase in repeat bookings",
-      description: "IoT integration with AI for personalized room environments",
+      title: "Enterprise Solutions: Connected User Experience",
+      company: "Enterprise Solutions Inc",
+      industry: "Business Systems",
+      results: "42% improvement in user preference accuracy, 15% increase in system adoption",
+      description: "IoT integration with AI for personalized user environments",
     },
     {
       id: 3,
-      title: "Boutique Hotel Chain: Personalized Concierge AI",
-      company: "Kimpton Hotels",
-      industry: "Boutique Hotels",
-      results: "50% reduction in concierge workload, 25% increase in upselling success",
-      description: "AI-driven recommendation engine for local experiences and services",
+      title: "Innovation Labs: Personalized Assistant AI",
+      company: "Innovation Labs",
+      industry: "Research & Development",
+      results: "50% reduction in support workload, 25% increase in user engagement",
+      description: "AI-driven recommendation engine for personalized experiences and services",
     },
   ]
 
   const applicationAreas = [
     {
-      area: "Guest Experience Optimization",
+      area: "User Experience Optimization",
       applications: [
-        "Personalized room preferences",
+        "Personalized system preferences",
         "Customized service recommendations",
         "Predictive maintenance alerts",
       ],
@@ -141,20 +141,20 @@ export default function PaperDetailsPage() {
       implementation: "Medium",
     },
     {
-      area: "Revenue Management",
-      applications: ["Dynamic pricing optimization", "Demand forecasting", "Upselling automation"],
+      area: "System Management",
+      applications: ["Dynamic resource optimization", "Demand forecasting", "Auto-scaling automation"],
       impact: "Very High",
       implementation: "High",
     },
     {
       area: "Operational Efficiency",
-      applications: ["Staff scheduling optimization", "Inventory management", "Energy consumption optimization"],
+      applications: ["Staff scheduling optimization", "Resource management", "Energy consumption optimization"],
       impact: "High",
       implementation: "Medium",
     },
     {
-      area: "Marketing & Sales",
-      applications: ["Targeted campaign personalization", "Customer segmentation", "Loyalty program optimization"],
+      area: "Marketing & Engagement",
+      applications: ["Targeted campaign personalization", "User segmentation", "Engagement program optimization"],
       impact: "Medium",
       implementation: "Low",
     },
@@ -195,6 +195,14 @@ export default function PaperDetailsPage() {
                 Collaboration
               </a>
             </nav>
+            <div className="flex items-center space-x-3">
+              <Button variant="outline" size="sm" onClick={() => (window.location.href = "/auth/signin")}>
+                Sign In
+              </Button>
+              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" onClick={() => (window.location.href = "/auth/register")}>
+                Get Started
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -258,9 +266,13 @@ export default function PaperDetailsPage() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+              <Button 
+                size="lg" 
+                className="bg-emerald-600 hover:bg-emerald-700"
+                onClick={() => router.push(`/research/${paperId}/reader`)}
+              >
                 <FileText className="h-4 w-4 mr-2" />
-                Read Full Paper
+                Read Paper
               </Button>
               <Button
                 variant="outline"
