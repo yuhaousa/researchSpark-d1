@@ -12,7 +12,7 @@ export default function ResearchPage() {
       title: "AI-Driven Personalization in Modern Hospitality: A Comprehensive Analysis",
       authors: ["Dr. Sarah Chen", "Prof. Michael Rodriguez"],
       abstract:
-        "This study examines the implementation of artificial intelligence in hospitality personalization, analyzing data from 500+ hotels worldwide to understand customer satisfaction improvements and operational efficiency gains.",
+        "This study examines the implementation of artificial intelligence in Research personalization, analyzing data from 500+ hotels worldwide to understand customer satisfaction improvements and operational efficiency gains.",
       category: "AI & Technology",
       publishedDate: "2024-01-15",
       views: 2847,

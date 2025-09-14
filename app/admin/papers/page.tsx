@@ -44,7 +44,7 @@ export default function PaperManagement() {
   const papers = [
     {
       id: 1,
-      title: "AI-Driven Personalization in Hospitality Services",
+      title: "AI-Driven Personalization in Research and Education",
       author: "Dr. Sarah Chen",
       category: "AI & Technology",
       status: "Published",
